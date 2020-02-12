@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 /**
  * 
- * @author marcoshung
+ * @author marcos hung
  *@version 1.00
  */
 //ok to have an empty txt file
