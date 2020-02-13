@@ -33,7 +33,7 @@ public class Movie {
 	 * 
 	 * @return all the dates that this movie is being shown on 
 	 */
-	public Set getDates() {
+	public Set<String> getDates() {
 		return showtimes.keySet();
 	}
 	

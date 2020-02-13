@@ -68,6 +68,7 @@ public class User {
 	public void addToCurrent(Reservation r) {
 		currentReservations.add(r);
 	}
+	
 	/**
 	 * 
 	 * @return the current reservations that have been made during the user's session
@@ -82,4 +83,17 @@ public class User {
 	public void clearCurrent() {
 		this.currentReservations = new HashSet<Reservation>();
 	}
+	
+	/**
+	 *  @return a set of movie titles in String format
+	 */
+	
+	public HashSet<String> getMovieTitles(){
+		HashSet<String> titles = new HashSet<String>();
+		for(Reservation r: reservations) {
+			titles.add(r.getMovie().toLowerCase().trim());
+		}
+		return titles;
+	}
+		
 }	

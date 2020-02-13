@@ -18,7 +18,7 @@ public class SouthBalcony implements Seating{
 	 * @return integer representing the price of the ticket
 	 */
 	public int getTicketPrice(int seatNum) {
-		if(seatNum >25) {
+		if(seatNum > 25) {
 			return 55;
 		}
 		return 50;

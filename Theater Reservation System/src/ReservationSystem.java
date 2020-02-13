@@ -50,14 +50,16 @@ public class ReservationSystem {
 	public static void start() {
 		System.out.println("Enter I to Sign In or U to Sign up or X to Exit system");
 		String input = console.next().toLowerCase();
+		while(!input.equals("i") && !input.equals("u") && !input.equals("x")) {
+			System.out.println("Invalid Input");
+			input =console.next().toLowerCase();
+		}
 		if(input.equals("i")) {
 			login();
 		}else if(input.equals("u")) {
 			signUp();
 		}else if(input.equals("x")) {
 			System.out.println("Thank you for visiting!");
-		}else {
-			System.out.println("Invalid Input");
 		}
 	}
 	
@@ -140,7 +142,6 @@ public class ReservationSystem {
 		}else if(command.equals("c")) {
 			cancel(user);
 		}else if(command.equals("o")) {
-			System.out.println(user.getCurrentReservations().size());
 			out(user);
 			return;// ends method
 		}
@@ -184,6 +185,10 @@ public class ReservationSystem {
 	private static void cancel(User u) {
 		System.out.println("Enter movie name you wish to cancel");
 		String title = console.nextLine();
+		while(!u.getMovieTitles().contains(title.toLowerCase())) {
+			System.out.println("You don't have a reservation for that movie. Enter another");
+			title = console.nextLine();
+		}
 		System.out.println("Enter Date and time you wish to cancel\nEnter in YYYY-MM-DD HH-MM Format");
 		String[] elements = console.nextLine().split(" ");
 		if(elements.length != 2) {

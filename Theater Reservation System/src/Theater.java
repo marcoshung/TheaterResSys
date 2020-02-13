@@ -72,6 +72,7 @@ public class Theater {
 	public HashMap<String, Movie> getMovies(){
 		return this.movies;
 	}
+	
 	/**
 	 * 
 	 * @return Titles of the movies this theater is showing
@@ -90,6 +91,10 @@ public class Theater {
 		seat = seat.toLowerCase();
 		int seatNum = -1;
 		Seating section = determineSection(seat);
+		if(section == null) {
+			System.out.println("Incorrect Format");
+			return;
+		}
 		if(section.equals(mf)) {
 			seatNum = Integer.parseInt(seat.substring(1));
 		}else if(section !=null){
@@ -214,14 +219,27 @@ public class Theater {
 	 * @return the seating section that the seat number corresponds to
 	 */
 	public Seating determineSection(String s) {
+		boolean isnumeric = true;
 		if(s.startsWith("m")) {
+			try {
+				Integer.parseInt(s.substring(1));
+			}catch (NumberFormatException nfe){
+				return null;
+			}
 			return mf;
-		}else if(s.startsWith("sb")) {
-			return sBalcony;
-		}else if(s.startsWith("eb")) {
-			return eBalcony;
-		}else if(s.startsWith("wb")) {
-			return wBalcony;
+		}else {
+			try {
+				Integer.parseInt(s.substring(2));
+			}catch (NumberFormatException nfe){
+				return null;
+			}
+			if(s.startsWith("sb")) {
+				return sBalcony;
+			}else if(s.startsWith("eb")) {
+				return eBalcony;
+			}else if(s.startsWith("wb")) {
+				return wBalcony;
+			}
 		}
 		return null;
 	}
